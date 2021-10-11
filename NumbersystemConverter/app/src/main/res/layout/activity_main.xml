@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <Spinner
+        android:id="@+id/spinner_from"
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/spinner_width"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <ImageView
+        android:id="@+id/iv_arrow_right"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/margin_default"
+        android:layout_below="@+id/spinner_from"
+        android:layout_margin="@dimen/margin_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ImageView>
+
+
+    <Spinner
+        android:id="@+id/spinner_to"
+        android:layout_below="@+id/iv_arrow_right"
+        android:layout_margin="@dimen/margin_default"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/spinner_width"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+
+    <LinearLayout
+        android:id="@+id/ll_from"
+        android:layout_below="@+id/spinner_to"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_show_type_from"
+            android:text="@string/tv_show_type_from_default"
+            android:textStyle="bold"
+            android:layout_width="@dimen/tv_show_type_width"
+            android:textSize="@dimen/large_text_size"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <EditText
+            android:id="@+id/et_input_number"
+            android:textSize="@dimen/large_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_input_number"
+            android:autofillHints="@string/hint_input_number"
+            android:inputType="text">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_to"
+        android:layout_below="@+id/ll_from"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_show_type_to"
+            android:text="@string/tv_show_type_to_default"
+            android:textStyle="bold"
+            android:layout_width="@dimen/tv_show_type_width"
+            android:textSize="@dimen/large_text_size"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/large_text_size"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_convert"
+        android:layout_marginBottom="@dimen/margin_convert_button_bottom"
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_alignParentBottom="true"
+        android:text="@string/button_convert"
+        android:padding="@dimen/button_convert_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Button>
+</RelativeLayout>
