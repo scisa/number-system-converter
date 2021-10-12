@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.numbersystemconverter.R;
+import com.example.numbersystemconverter.model.Number;
 import com.example.numbersystemconverter.util.NumberSystemsConverter;
 
 import java.util.ArrayList;
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         this.initNumberSystemsTypeList();
         this.initTextViewResultList();
         this.initTextViewTypeList();
+        this.initOnInputClickListener();
         this.initSpinner();
         this.setSpinnerToDefaultOptions();
         this.initSpinnerOnClickListener();
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initViews() {
         this.etInputNumber = findViewById(R.id.et_input_number);
+        this.etInputNumber.setImeOptions(EditorInfo.IME_ACTION_DONE);
         this.tvTypeFrom = findViewById(R.id.tv_show_type_from);
         this.tvTypeToOne = findViewById(R.id.tv_show_type_to_one);
         this.tvTypeToTwo = findViewById(R.id.tv_show_type_to_two);
@@ -88,6 +93,19 @@ public class MainActivity extends AppCompatActivity {
         this.textViewTypeList.add(this.tvTypeToThree);
     }
 
+    private void initOnInputClickListener() {
+        this.etInputNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER))
+                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    convertButtonClicked();
+                }
+                return false;
+            }
+        });
+    }
+
     private void initSpinner() {
         this.spinnerFrom = findViewById(R.id.spinner_from);
 
@@ -106,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
         this.spinnerFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                resultInput();
+                resetResultViews();
                 String selectedNumberSystem = parent.getItemAtPosition(position).toString();
                 changeNumberSystems(selectedNumberSystem);
             }
@@ -142,14 +162,51 @@ public class MainActivity extends AppCompatActivity {
         this.btnConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculateNumbers();
+                convertButtonClicked();
             }
         });
     }
 
-    private void calculateNumbers() {
+    private void convertButtonClicked() {
+        Number number = calculateNumbers();
+        changeNumbers(number);
+    }
+
+    private Number calculateNumbers() {
         String nsType = tvTypeFrom.getText().toString();
         String value = etInputNumber.getText().toString();
         NumberSystemsConverter converter = new NumberSystemsConverter(nsType, value);
+        Number number = converter.calculateNumber();
+        return number;
+    }
+
+    private void changeNumbers(Number number) {
+        if (this.tvTypeFrom.getText().equals("Dec")) {
+            this.tvResultOne.setText(number.getBinNumber());
+            this.tvResultTwo.setText(number.getOctNumber());
+            this.tvResultThree.setText(number.getHexNumber());
+        } else if (this.tvTypeFrom.getText().equals("Bin")) {
+            this.tvResultOne.setText(number.getDecNumber());
+            this.tvResultTwo.setText(number.getOctNumber());
+            this.tvResultThree.setText(number.getHexNumber());
+        } else if (this.tvTypeFrom.getText().equals("Oct")) {
+            this.tvResultOne.setText(number.getDecNumber());
+            this.tvResultTwo.setText(number.getBinNumber());
+            this.tvResultThree.setText(number.getHexNumber());
+        } else if (this.tvTypeFrom.getText().equals("Hex")) {
+            this.tvResultOne.setText(number.getDecNumber());
+            this.tvResultTwo.setText(number.getBinNumber());
+            this.tvResultThree.setText(number.getOctNumber());
+        }
+    }
+
+    private void resultInput() {
+        this.etInputNumber.setText("");
+    }
+
+    private void resetResultViews() {
+        this.tvResultOne.setText("");
+        this.tvResultTwo.setText("");
+        this.tvResultThree.setText("");
     }
 }
