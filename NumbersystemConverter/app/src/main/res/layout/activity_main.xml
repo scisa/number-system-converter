@@ -8,14 +8,16 @@
 
     <Spinner
         android:id="@+id/spinner_from"
-        android:layout_marginHorizontal="@dimen/margin_default"
-        android:layout_marginBottom="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_centerHorizontal="true"
         android:layout_width="@dimen/spinner_width"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginBottom="@dimen/margin_default">
     </Spinner>
 
+
+    <!--
     <ImageView
         android:id="@+id/iv_arrow_right"
         android:src="@drawable/ic_baseline_arrow_forward_24"
@@ -36,11 +38,11 @@
         android:layout_width="@dimen/spinner_width"
         android:layout_height="wrap_content">
     </Spinner>
-
+-->
 
     <LinearLayout
         android:id="@+id/ll_from"
-        android:layout_below="@+id/spinner_to"
+        android:layout_below="@+id/spinner_from"
         android:layout_marginTop="@dimen/margin_top"
         android:layout_marginHorizontal="@dimen/margin_default"
         android:layout_marginBottom="@dimen/margin_default"
@@ -68,7 +70,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_to"
+        android:id="@+id/ll_to_one"
         android:layout_below="@+id/ll_from"
         android:layout_marginTop="@dimen/margin_top"
         android:layout_marginHorizontal="@dimen/margin_default"
@@ -77,8 +79,8 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_show_type_to"
-            android:text="@string/tv_show_type_to_default"
+            android:id="@+id/tv_show_type_to_one"
+            android:text="@string/tv_show_type_to_one_default"
             android:textStyle="bold"
             android:layout_width="@dimen/tv_show_type_width"
             android:textSize="@dimen/large_text_size"
@@ -86,7 +88,62 @@
         </TextView>
 
         <TextView
-            android:id="@+id/tv_result"
+            android:id="@+id/tv_result_one"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/large_text_size"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_to_two"
+        android:layout_below="@+id/ll_to_one"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_show_type_to_two"
+            android:text="@string/tv_show_type_to_two_default"
+            android:textStyle="bold"
+            android:layout_width="@dimen/tv_show_type_width"
+            android:textSize="@dimen/large_text_size"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_result_two"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/large_text_size"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_to_three"
+        android:layout_below="@+id/ll_to_two"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_show_type_to_three"
+            android:text="@string/tv_show_type_to_three_default"
+            android:textStyle="bold"
+            android:layout_width="@dimen/tv_show_type_width"
+            android:textSize="@dimen/large_text_size"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_result_three"
             android:layout_width="match_parent"
             android:textSize="@dimen/large_text_size"
             android:layout_height="wrap_content">

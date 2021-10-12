@@ -5,15 +5,27 @@
     <string name="hint_input_number">insert a number</string>
 
     <string name="tv_show_type_from_default">Dec</string>
-    <string name="tv_show_type_to_default">Bin</string>
+    <string name="tv_show_type_to_one_default">Bin</string>
+    <string name="tv_show_type_to_two_default">Oct</string>
+    <string name="tv_show_type_to_three_default">Hex</string>
 
     <string name="number_system_from_default">Decimal</string>
-    <string name="number_system_to_default">Binary</string>
+    <string name="number_system_to_one_default">Binary</string>
+    <string name="number_system_to_two_default">Octal</string>
+    <string name="number_system_to_three_default">Hexadecimal</string>
+
 
     <string-array name="number_systems_array">
         <item>Decimal</item>
         <item>Binary</item>
         <item>Octal</item>
         <item>Hexadecimal</item>
+    </string-array>
+
+    <string-array name="number_systems_type_array">
+        <item>Dec</item>
+        <item>Bin</item>
+        <item>Oct</item>
+        <item>Hex</item>
     </string-array>
 </resources>
