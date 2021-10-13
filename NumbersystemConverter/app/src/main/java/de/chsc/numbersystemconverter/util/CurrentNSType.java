@@ -1,4 +1,4 @@
-package com.example.numbersystemconverter.util;
+package de.chsc.numbersystemconverter.util;
 
 public enum CurrentNSType {
     decimal,

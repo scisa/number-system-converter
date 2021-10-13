@@ -1,4 +1,4 @@
-package com.example.numbersystemconverter;
+package de.chsc.numbersystemconverter;
 
 import org.junit.Test;
 

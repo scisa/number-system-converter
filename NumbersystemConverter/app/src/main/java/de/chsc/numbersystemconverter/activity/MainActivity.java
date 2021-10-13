@@ -1,10 +1,9 @@
-package com.example.numbersystemconverter.activity;
+package de.chsc.numbersystemconverter.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -15,10 +14,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.numbersystemconverter.R;
-import com.example.numbersystemconverter.model.Number;
-import com.example.numbersystemconverter.util.CurrentNSType;
-import com.example.numbersystemconverter.util.NumberSystemsConverter;
+import de.chsc.numbersystemconverter.R;
+import de.chsc.numbersystemconverter.model.Number;
+import de.chsc.numbersystemconverter.util.NumberSystemsConverter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

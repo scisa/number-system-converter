@@ -1,7 +1,7 @@
-package com.example.numbersystemconverter.util;
+package de.chsc.numbersystemconverter.util;
 
 
-import com.example.numbersystemconverter.model.Number;
+import de.chsc.numbersystemconverter.model.Number;
 
 import java.math.BigInteger;
 

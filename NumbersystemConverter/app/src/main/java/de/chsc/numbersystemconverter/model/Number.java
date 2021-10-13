@@ -1,4 +1,4 @@
-package com.example.numbersystemconverter.model;
+package de.chsc.numbersystemconverter.model;
 
 public class Number {
     private String decNumber;
