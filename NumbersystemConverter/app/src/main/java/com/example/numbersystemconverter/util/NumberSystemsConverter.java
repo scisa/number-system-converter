@@ -29,7 +29,7 @@ public class NumberSystemsConverter {
     public Number calculateNumber() {
         Number number = new Number();
 
-        if (this.isValidNumber()) {
+        try {
             BigInteger bigInteger = null;
             switch (this.currentNSType) {
                 case decimal:
@@ -45,51 +45,14 @@ public class NumberSystemsConverter {
                     bigInteger = new BigInteger(value, 16);
                     break;
             }
+
             number.setDecNumber(bigInteger.toString(10));
             number.setBinNumber(bigInteger.toString(2));
             number.setOctNumber(bigInteger.toString(8));
             number.setHexNumber(bigInteger.toString(16));
-        }
+        } catch (NumberFormatException nfe) {
 
+        }
         return number;
-    }
-
-    private boolean isValidNumber() {
-        boolean isValid = false;
-        if (!value.isEmpty()) {
-            switch (this.currentNSType) {
-                case decimal:
-                    isValid = this.isValidDecNumber();
-                    break;
-                case binary:
-                    isValid = this.isValidBinNumber();
-                    break;
-                case octal:
-                    isValid = this.isValidOctNumber();
-                    break;
-                case hexadecimal:
-                    isValid = this.isValidHexNumber();
-                    break;
-                default:
-                    break;
-            }
-        }
-        return isValid;
-    }
-
-    private boolean isValidDecNumber() {
-        return true;
-    }
-
-    private boolean isValidBinNumber() {
-        return true;
-    }
-
-    private boolean isValidOctNumber() {
-        return true;
-    }
-
-    private boolean isValidHexNumber() {
-        return true;
     }
 }

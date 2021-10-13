@@ -3,6 +3,7 @@ package com.example.numbersystemconverter.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.numbersystemconverter.R;
 import com.example.numbersystemconverter.model.Number;
+import com.example.numbersystemconverter.util.CurrentNSType;
 import com.example.numbersystemconverter.util.NumberSystemsConverter;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvResultTwo;
     private TextView tvResultThree;
     private Button btnConvert;
+    private Button btnReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         this.initSpinner();
         this.setSpinnerToDefaultOptions();
         this.initSpinnerOnClickListener();
-        this.initButton();
-        this.initButtonOnClickListener();
+        this.initButtons();
+        this.initButtonsOnClickListener();
     }
 
     private void initViews() {
@@ -118,13 +121,14 @@ public class MainActivity extends AppCompatActivity {
     private void setSpinnerToDefaultOptions() {
         String spinnerFromDefault = getResources().getString(R.string.number_system_from_default);
         this.spinnerFrom.setSelection(this.arrayAdapter.getPosition(spinnerFromDefault));
+        this.setInputTypeNumber();
     }
 
     private void initSpinnerOnClickListener() {
         this.spinnerFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                resultInput();
+                resetInput();
                 resetResultViews();
                 String selectedNumberSystem = parent.getItemAtPosition(position).toString();
                 changeNumberSystems(selectedNumberSystem);
@@ -138,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeNumberSystems(String selectedNumberSystem) {
-        // TODO: check if lists have the right length
         int tvCounter = 0;
         int tvTypeCounter = 0;
         TextView temp;
@@ -149,20 +152,30 @@ public class MainActivity extends AppCompatActivity {
                 tvCounter++;
             } else {
                 this.tvTypeFrom.setText(this.numberSystemsTypeList.get(tvTypeCounter));
+                this.checkInputType(selectedNumberSystem);
             }
             tvTypeCounter++;
         }
     }
 
-    private void initButton() {
+    private void initButtons() {
         this.btnConvert = findViewById(R.id.button_convert);
+        this.btnReset = findViewById(R.id.button_reset);
     }
 
-    private void initButtonOnClickListener() {
+    private void initButtonsOnClickListener() {
         this.btnConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 convertButtonClicked();
+            }
+        });
+
+        this.btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetResultViews();
+                resetInput();
             }
         });
     }
@@ -200,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void resultInput() {
+    private void resetInput() {
         this.etInputNumber.setText("");
     }
 
@@ -208,5 +221,21 @@ public class MainActivity extends AppCompatActivity {
         this.tvResultOne.setText("");
         this.tvResultTwo.setText("");
         this.tvResultThree.setText("");
+    }
+
+    private void checkInputType(String selectedNumberSystem) {
+        if (!selectedNumberSystem.equals("Hexadecimal")) {
+            this.setInputTypeNumber();
+        } else {
+            this.setInputTypeText();
+        }
+    }
+
+    private void setInputTypeNumber() {
+        this.etInputNumber.setInputType(InputType.TYPE_CLASS_NUMBER);
+    }
+
+    private void setInputTypeText() {
+        this.etInputNumber.setInputType(InputType.TYPE_CLASS_TEXT);
     }
 }

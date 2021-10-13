@@ -5,19 +5,22 @@ public class Number {
     private String binNumber;
     private String octNumber;
     private String hexNumber;
+    private final String BIN_PREFIX = "0b";
+    private final String OCT_PREFIX = "0o";
+    private final String HEX_PREFIX = "0x";
 
     public Number() {
         this.decNumber = "0";
-        this.binNumber = "0b0";
-        this.octNumber = "0o0";
-        this.hexNumber = "0x0";
+        this.binNumber = BIN_PREFIX + "0";
+        this.octNumber = OCT_PREFIX + "0";
+        this.hexNumber = HEX_PREFIX + "0";
     }
 
     public Number(String decNumber, String binNumber, String octNumber, String hexNumber) {
         this.decNumber = decNumber;
-        this.binNumber = binNumber;
-        this.octNumber = octNumber;
-        this.hexNumber = hexNumber;
+        this.binNumber = BIN_PREFIX + binNumber;
+        this.octNumber = OCT_PREFIX + octNumber;
+        this.hexNumber = HEX_PREFIX + hexNumber;
     }
 
     public String getDecNumber() {
@@ -33,7 +36,7 @@ public class Number {
     }
 
     public void setBinNumber(String binNumber) {
-        this.binNumber = binNumber;
+        this.binNumber = BIN_PREFIX + binNumber;
     }
 
     public String getOctNumber() {
@@ -41,7 +44,7 @@ public class Number {
     }
 
     public void setOctNumber(String octNumber) {
-        this.octNumber = octNumber;
+        this.octNumber = OCT_PREFIX + octNumber;
     }
 
     public String getHexNumber() {
@@ -49,6 +52,6 @@ public class Number {
     }
 
     public void setHexNumber(String hexNumber) {
-        this.hexNumber = hexNumber;
+        this.hexNumber = HEX_PREFIX + hexNumber;
     }
 }
